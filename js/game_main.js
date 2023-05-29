@@ -1,5 +1,11 @@
 const boardCells = document.querySelectorAll(".board_block");
 const array = [];
+
+let isGameOver = false;
+let isPlayerWin = false;
+let currentPlayer = "x";
+
+// 초기화 : 게임 결과 체크를 위해 불러운 칸들을 3*3 배열에 넣어줌.
 for (let i = 0; i < 3; i++) {
   array.push([]);
 }
@@ -10,56 +16,84 @@ for (let i = 0; i < 3; i++) {
   }
 }
 
-console.log(array);
-
 const handleCellClick = (e) => {
   console.log(e);
   const img = document.createElement("img");
-  img.setAttribute("src", "assets/icon-o.svg");
+  if (currentPlayer === "o") {
+    img.setAttribute("src", "assets/icon-o.svg");
+  } else {
+    img.setAttribute("src", "assets/icon-x.svg");
+  }
   e.target.appendChild(img);
-  e.target.classList.add("clicked");
+  e.target.classList.add("clicked", currentPlayer);
   checkGameResult();
+  if (currentPlayer === "o") {
+    currentPlayer = "x";
+  } else {
+    currentPlayer = "o";
+  }
 };
 
 const checkGameResult = () => {
-  let count;
+  let x_count, o_count;
 
   // 가로 체크
   for (i = 0; i < 3; i++) {
-    count = 0;
+    x_count = 0;
+    o_count = 0;
     for (j = 0; j < 3; j++) {
       if (array[i][j].classList.contains("clicked")) {
-        count++;
+        if (array[i][j].classList.contains("x")) {
+          x_count++;
+        } else if (array[i][j].classList.contains("o")) {
+          o_count++;
+        }
       }
+      console.log(x_count, o_count);
     }
-    if (count === 3) {
-      console.log("horizontal win!");
+    if (x_count === 3) {
+      console.log("player X win!");
+    } else if (o_count === 3) {
+      console.log("player O win!");
     }
   }
   // 세로 체크
   for (i = 0; i < 3; i++) {
-    count = 0;
+    x_count = 0;
+    o_count = 0;
     for (j = 0; j < 3; j++) {
       if (array[j][i].classList.contains("clicked")) {
-        count++;
+        if (array[j][i].classList.contains("x")) {
+          x_count++;
+        } else if (array[j][i].classList.contains("o")) {
+          o_count++;
+        }
       }
     }
-    if (count === 3) {
-      console.log("vertical win!");
+    if (x_count === 3) {
+      console.log("player X win!");
+    } else if (o_count === 3) {
+      console.log("player O win!");
     }
   }
   // 대각선 체크
-  count = 0;
+  x_count = 0;
+  o_count = 0; //for문 돌 때마다 count가 초기화되면 안 되기 때문에 for문 밖에서 0으로 초기화
   for (i = 0; i < 3; i++) {
     if (
       array[i][i].classList.contains("clicked") ||
       array[i][2 - i].classList.contains("clicked")
     ) {
-      count++;
+      if (array[i][2 - i].classList.contains("x")) {
+        x_count++;
+      } else if (array[i][2 - i].classList.contains("o")) {
+        o_count++;
+      }
     }
-    console.log(array[i][i]);
-    if (count === 3) {
-      console.log("diagonal win!");
+    if (x_count === 3) {
+      console.log("player X win!");
+    } else if (o_count === 3) {
+      console.log("player O win!");
     }
   }
 };

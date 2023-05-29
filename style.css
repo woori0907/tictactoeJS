@@ -1,0 +1,40 @@
+:root {
+  --color-prim-lightblue: #31c3bd;
+  --color-prim-neonblue: #65e9e4;
+  --color-neutral-darkblue: #1f3641;
+  --color-neutral-verydarkblue: #1a2a33;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family: "Outfit", sans-serif;
+}
+.main_wrap {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+.game_board_wrap {
+  display: grid;
+  width: 720px;
+  height: 720px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px 20px;
+}
+.board_block {
+  background-color: var(--color-neutral-darkblue);
+  border-radius: 20px;
+  position: relative;
+}
+
+.board_block img {
+  position: absolute;
+}

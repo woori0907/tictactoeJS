@@ -3,6 +3,8 @@
   --color-prim-neonblue: #65e9e4;
   --color-neutral-darkblue: #1f3641;
   --color-neutral-verydarkblue: #1a2a33;
+  --color-neutral-lightgrey: #dbe8ed;
+  --color-neutral-grey: #a8bfc9;
 }
 
 * {
@@ -13,6 +15,11 @@
 body {
   font-family: "Outfit", sans-serif;
 }
+
+.invisible {
+  display: none !important;
+}
+
 .main_wrap {
   width: 100vw;
   height: 100vh;
@@ -21,11 +28,47 @@ body {
   justify-content: center;
   align-items: center;
   overflow: hidden;
+  position: relative;
 }
+.new_game_page,
+.game_page {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-color: var(--color-neutral-verydarkblue);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.new_game_page {
+  z-index: 999;
+  color: var(--color-neutral-lightgrey);
+}
+.new_game_wrap {
+  width: 600px;
+  padding: 40px;
+}
+.toggle_wrap {
+  display: flex;
+  flex-direction: row;
+}
+.toggle_item {
+  width: 50%;
+  text-align: center;
+}
+.toggle_item img {
+  fill: var(--color-neutral-lightgrey);
+}
+.new_game_button {
+  width: 100%;
+}
+
+/* Game */
 .game_board_wrap {
   display: grid;
-  width: 720px;
-  height: 720px;
+  width: 600px;
+  height: 600px;
   grid-template-columns: repeat(3, 1fr);
   gap: 20px 20px;
 }

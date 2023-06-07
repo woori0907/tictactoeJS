@@ -1,4 +1,6 @@
 const boardCells = document.querySelectorAll(".board_block");
+const currentTurn = document.querySelectorAll(".player_turn");
+const img = document.createElement("img");
 const array = [];
 
 let isGameOver = false;
@@ -16,6 +18,16 @@ for (let i = 0; i < 3; i++) {
   }
 }
 
+const displayCurrentPlayer = () => {
+  if (currentPlayer === "o") {
+    currentTurn[1].classList.remove("invisible");
+    currentTurn[0].classList.add("invisible");
+  } else {
+    currentTurn[0].classList.remove("invisible");
+    currentTurn[1].classList.add("invisible");
+  }
+};
+
 const handleCellClick = (e) => {
   console.log(e);
   const img = document.createElement("img");
@@ -32,6 +44,7 @@ const handleCellClick = (e) => {
   } else {
     currentPlayer = "o";
   }
+  displayCurrentPlayer();
 };
 
 const checkGameResult = () => {

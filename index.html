@@ -13,7 +13,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Outfit:wght@700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;700&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="style.css" />
@@ -95,7 +95,7 @@
             </div>
           </div>
           <div class="header_block">
-            <button class="btn_reset">
+            <button class="btn_menu">
               <img src="assets/icon-restart.svg" />
             </button>
           </div>
@@ -112,9 +112,18 @@
           <div class="board_block"></div>
         </section>
         <section class="score_wrap">
-          <div class="score_block"></div>
-          <div class="score_block"></div>
-          <div class="score_block"></div>
+          <div class="score_block">
+            <h3 class="score_title">X (YOU)</h3>
+            <p class="score">0</p>
+          </div>
+          <div class="score_block">
+            <h3 class="score_title">TIES</h3>
+            <p class="score">0</p>
+          </div>
+          <div class="score_block">
+            <h3 class="score_title">O (CPU)</h3>
+            <p class="score">0</p>
+          </div>
         </section>
       </section>
       <!-- x/o icon -->
@@ -130,8 +139,25 @@
       wins!
 
       <!-- x/o icon -->
-      takes the round Round tied Restart game? Quit Next round No, cancel Yes,
-      restart
+      <section class="reset_page invisible">
+        <div class="overlay_wrap">
+          <h1 class="title_big text_color_grey">RESTART GAME?</h1>
+          <div class="buttons_wrap">
+            <button class="btn_quit">NO, CANCEL</button>
+            <button class="btn_reset">YES, RESTART</button>
+          </div>
+        </div>
+      </section>
+      <section class="result_page invisible">
+        <div class="overlay_wrap">
+          <h3>You Won!</h3>
+          <h1>takes the round</h1>
+          <div class="buttons_wrap">
+            <button class="btn_quit">QUIT</button>
+            <button class="btn_next">NEXT ROUND</button>
+          </div>
+        </div>
+      </section>
 
       <!-- Game board end -->
     </section>

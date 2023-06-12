@@ -22,6 +22,8 @@
 }
 body {
   font-family: "Outfit", sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.88px;
 }
 
 .invisible {
@@ -113,20 +115,17 @@ body {
   position: relative;
   box-shadow: #10212a 0 10px;
 }
-
-.score_block {
+.btn_menu {
+  width: 64px;
+  height: 100%;
   border-radius: 20px;
-  position: relative;
-}
-.score_block:nth-of-type(1) {
-  background-color: var(--color-prim-lightblue);
-}
-.score_block:nth-of-type(2) {
   background-color: var(--color-neutral-grey);
+  border: none;
+  box-shadow: #6b8997 0 10px;
 }
-.score_block:nth-of-type(3) {
-  background-color: var(--color-neutral-yellow);
-}
+
+/* game board */
+
 .board_block {
   background-color: var(--color-neutral-darkblue);
   border-radius: 20px;
@@ -141,6 +140,91 @@ body {
   top: 50%;
   transform: translate(-50%, -50%);
 }
+
 .board_block.clicked {
   pointer-events: none;
+}
+
+/* footer */
+
+.score_block {
+  border-radius: 20px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.score_block:nth-of-type(1) {
+  background-color: var(--color-prim-lightblue);
+}
+.score_block:nth-of-type(2) {
+  background-color: var(--color-neutral-grey);
+}
+.score_block:nth-of-type(3) {
+  background-color: var(--color-neutral-yellow);
+}
+.score_title {
+  font-size: var(--font-size-extrasmall);
+  font-weight: 500;
+}
+.score {
+  font-size: var(--font-size-medium);
+  font-weight: 700;
+}
+
+.reset_page,
+.result_page {
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+.reset_page {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.overlay_wrap {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--color-neutral-darkblue);
+  height: 300px;
+  gap: 30px 0;
+}
+
+.title_big {
+  font-size: var(--font-size-large);
+  letter-spacing: 2.5px;
+}
+.text_color_grey {
+  color: var(--color-neutral-grey);
+}
+
+.buttons_wrap {
+  display: flex;
+  gap: 20px;
+}
+.buttons_wrap button {
+  border-radius: 16px;
+  padding: 16px 17px;
+  border: none;
+  font-weight: 700;
+  font-family: "Outfit", sans-serif;
+}
+.btn_quit {
+  background-color: var(--color-neutral-grey);
+  box-shadow: #6b8997 0 10px;
+}
+.btn_reset,
+.btn_next {
+  background-color: var(--color-neutral-yellow);
+  box-shadow: #cc8b13 0 10px;
 }

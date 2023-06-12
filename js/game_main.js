@@ -1,6 +1,7 @@
 const boardCells = document.querySelectorAll(".board_block");
 const currentTurn = document.querySelectorAll(".player_turn");
 const img = document.createElement("img");
+const resetBtn = document.querySelector(".btn_reset");
 const array = [];
 
 let isGameOver = false;
@@ -111,6 +112,16 @@ const checkGameResult = () => {
   }
 };
 
+const resetBoard = () => {
+  boardCells.forEach((cell) => {
+    const cellImg = cell.querySelector("img");
+    if (cellImg !== null) cellImg.remove();
+    cell.classList.remove("clicked", cell.classList.contains("o") ? "o" : "x");
+  });
+};
+
 boardCells.forEach((cell) => {
   cell.addEventListener("click", handleCellClick);
 });
+
+resetBtn.addEventListener("click", resetBoard);

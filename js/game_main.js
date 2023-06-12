@@ -10,6 +10,7 @@ const array = [];
 let isGameOver = false;
 let isPlayerWin = false;
 let currentPlayer = "x";
+let cellRemain = 9;
 
 // 초기화 : 게임 결과 체크를 위해 불러운 칸들을 3*3 배열에 넣어줌.
 for (let i = 0; i < 3; i++) {
@@ -33,8 +34,9 @@ const displayCurrentPlayer = () => {
 };
 
 const handleCellClick = (e) => {
-  console.log(e);
   const img = document.createElement("img");
+  cellRemain--;
+
   if (currentPlayer === "o") {
     img.setAttribute("src", "assets/icon-o.svg");
   } else {
@@ -101,9 +103,15 @@ const checkGameResult = () => {
       array[i][i].classList.contains("clicked") ||
       array[i][2 - i].classList.contains("clicked")
     ) {
-      if (array[i][2 - i].classList.contains("x")) {
+      if (
+        array[i][i].classList.contains("x") ||
+        array[i][2 - i].classList.contains("x")
+      ) {
         x_count++;
-      } else if (array[i][2 - i].classList.contains("o")) {
+      } else if (
+        array[i][i].classList.contains("o") ||
+        array[i][2 - i].classList.contains("o")
+      ) {
         o_count++;
       }
     }
@@ -111,10 +119,15 @@ const checkGameResult = () => {
       console.log("player X win!");
     } else if (o_count === 3) {
       console.log("player O win!");
+    } else if (x_count !== 3 && o_count !== 3 && cellRemain === 0) {
+      console.log("Tied!");
     }
   }
 };
 
+// Game Result
+
+// menu, reset
 const resetBoard = () => {
   boardCells.forEach((cell) => {
     const cellImg = cell.querySelector("img");
@@ -138,6 +151,7 @@ const handleMenu = () => {
   });
 };
 
+//event listener
 boardCells.forEach((cell) => {
   cell.addEventListener("click", handleCellClick);
 });

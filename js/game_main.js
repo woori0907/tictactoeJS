@@ -5,12 +5,24 @@ const resetBtn = document.querySelector(".btn_reset");
 const menuBtn = document.querySelector(".btn_menu");
 const resetPage = document.querySelector(".reset_page");
 const btn_quit = document.querySelectorAll(".btn_quit");
+const scores = document.querySelectorAll(".score");
+
 const array = [];
 
 let isGameOver = false;
 let isPlayerWin = false;
 let currentPlayer = "x";
 let cellRemain = 9;
+
+const displayCurrentPlayer = () => {
+  if (currentPlayer === "o") {
+    currentTurn[1].classList.remove("invisible");
+    currentTurn[0].classList.add("invisible");
+  } else {
+    currentTurn[0].classList.remove("invisible");
+    currentTurn[1].classList.add("invisible");
+  }
+};
 
 // 초기화 : 게임 결과 체크를 위해 불러운 칸들을 3*3 배열에 넣어줌.
 for (let i = 0; i < 3; i++) {
@@ -22,16 +34,6 @@ for (let i = 0; i < 3; i++) {
     array[i][j] = boardCells[3 * i + j];
   }
 }
-
-const displayCurrentPlayer = () => {
-  if (currentPlayer === "o") {
-    currentTurn[1].classList.remove("invisible");
-    currentTurn[0].classList.add("invisible");
-  } else {
-    currentTurn[0].classList.remove("invisible");
-    currentTurn[1].classList.add("invisible");
-  }
-};
 
 const handleCellClick = (e) => {
   const img = document.createElement("img");
@@ -157,3 +159,9 @@ boardCells.forEach((cell) => {
 });
 
 menuBtn.addEventListener("click", handleMenu);
+
+window.onbeforeunload = () => {
+  localStorage.removeItem("playerType");
+  localStorage.removeItem("player");
+  localStorage.removeItem("isGameStart");
+};

@@ -59,6 +59,9 @@ body {
 .new_game_wrap {
   width: 600px;
   padding: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
 }
 .player_pick_box {
   background-color: var(--color-neutral-darkblue);
@@ -81,6 +84,9 @@ body {
   width: 100%;
   align-items: center;
   position: relative;
+}
+.toggle_wrap p {
+  font-weight: 400;
 }
 .toggle_item {
   width: 50%;
@@ -116,6 +122,22 @@ body {
 }
 .new_game_button {
   width: 100%;
+  height: 60px;
+  border-radius: 10px;
+  outline: none;
+  border: none;
+  font-family: "Outfit", sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.88px;
+  font-size: var(--font-size-small);
+}
+.new_game_button:nth-of-type(1) {
+  background-color: var(--color-neutral-yellow);
+  box-shadow: #cc8b13 0 10px;
+}
+.new_game_button:nth-of-type(2) {
+  background-color: var(--color-prim-lightblue);
+  box-shadow: #118c87 0 10px;
 }
 
 /* Game */

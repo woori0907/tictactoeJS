@@ -60,16 +60,59 @@ body {
   width: 600px;
   padding: 40px;
 }
+.player_pick_box {
+  background-color: var(--color-neutral-darkblue);
+  padding: 30px;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px 0;
+  justify-content: center;
+  align-items: center;
+  box-shadow: #10212a 0 10px;
+  margin-bottom: 20px;
+}
 .toggle_wrap {
   display: flex;
   flex-direction: row;
+  background-color: var(--color-neutral-verydarkblue);
+  padding: 10px;
+  border-radius: 10px;
+  width: 100%;
+  align-items: center;
+  position: relative;
 }
 .toggle_item {
   width: 50%;
   text-align: center;
 }
-.toggle_item img {
-  fill: var(--color-neutral-lightgrey);
+.toggle_item svg {
+  transform: scale(0.75);
+  pointer-events: none;
+}
+.toggle_item.active path {
+  fill: var(--color-neutral-verydarkblue);
+}
+.toggle_item {
+  z-index: 999;
+}
+#player_x.active ~ .highlight {
+  transform: none;
+}
+#player_o.active ~ .highlight {
+  transform: translateX(100%);
+}
+.highlight {
+  background-color: var(--color-neutral-grey);
+  border-radius: 10px;
+  padding: 10px;
+  position: absolute;
+  width: calc(50% - 10px);
+  height: calc(100% - 16px);
+  transition: 0.25s all ease-in-out;
+}
+.toggle_item.active path {
+  fill: var(--color-neutral-verydarkblue);
 }
 .new_game_button {
   width: 100%;
